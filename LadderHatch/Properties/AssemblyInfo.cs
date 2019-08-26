@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ConsoleAchievementTracker")]
+[assembly: AssemblyTitle("LadderHatch")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ConsoleAchievementTracker")]
+[assembly: AssemblyProduct("LadderHatch")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1d2ffe54-cbde-42f9-9fbc-2f2cdcd90995")]
+[assembly: Guid("189d25e1-8651-4d1e-a734-07ece7978d5f")]
 
 // Version information for an assembly consists of the following four values:
 //

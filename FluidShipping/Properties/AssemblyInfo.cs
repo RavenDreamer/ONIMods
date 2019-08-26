@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ConsoleAchievementTracker")]
+[assembly: AssemblyTitle("OniFluidShipping")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ConsoleAchievementTracker")]
+[assembly: AssemblyProduct("OniFluidShipping")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1d2ffe54-cbde-42f9-9fbc-2f2cdcd90995")]
+[assembly: Guid("a8b66578-eba9-415b-b8ee-3c589359b8b1")]
 
 // Version information for an assembly consists of the following four values:
 //

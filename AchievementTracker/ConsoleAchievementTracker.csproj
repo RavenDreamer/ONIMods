@@ -7,8 +7,8 @@
     <ProjectGuid>{1D2FFE54-CBDE-42F9-9FBC-2F2CDCD90995}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ONIAchievementTracker</RootNamespace>
-    <AssemblyName>ONIAchievementTracker</AssemblyName>
+    <RootNamespace>ConsoleAchievementTracker</RootNamespace>
+    <AssemblyName>ConsoleAchievementTracker</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
