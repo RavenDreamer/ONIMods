@@ -54,6 +54,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LadderHatch.cs" />
+    <Compile Include="LadderHatchConfig.cs" />
     <Compile Include="LadderHatchPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

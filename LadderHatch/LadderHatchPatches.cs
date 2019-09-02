@@ -14,7 +14,7 @@ namespace StormShark.OniMods
 		{
 			public static void Prefix()
 			{
-				//LadderHatch.Setup();
+				LadderHatchConfig.Setup();
 				//FirePoleHatch.Setup();
 			}
 		}

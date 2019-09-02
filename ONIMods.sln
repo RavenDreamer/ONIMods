@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynchronizedTelepad", "Sync
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LadderHatch", "LadderHatch\LadderHatch.csproj", "{189D25E1-8651-4D1E-A734-07ECE7978D5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OniFluidShipping", "FluidShipping\OniFluidShipping.csproj", "{A8B66578-EBA9-415B-B8EE-3C589359B8B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluidShipping", "FluidShipping\FluidShipping.csproj", "{A8B66578-EBA9-415B-B8EE-3C589359B8B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
