@@ -16,11 +16,11 @@ namespace StormShark.OniMods
 		{
 			int width = 1;
 			int height = 1;
-			string anim = "stormshark_ladderhatch_kanim";
-			int hitpoints = 10;
+			string anim = "stormshark_trapdoor_kanim";
+			int hitpoints = 30;
 			float construction_time = 10f;
 			float[] tieR2 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER2;
-			string[] allMinerals = MATERIALS.ALL_MINERALS;
+			string[] allMinerals = MATERIALS.ALL_METALS;
 			float melting_point = 1600f;
 			BuildLocationRule build_location_rule = BuildLocationRule.Anywhere;
 			EffectorValues none = NOISE_POLLUTION.NONE;
@@ -32,11 +32,12 @@ namespace StormShark.OniMods
 			buildingDef.AudioSize = "small";
 			buildingDef.BaseTimeUntilRepair = -1f;
 			buildingDef.isSolidTile = true;
-			buildingDef.DragBuild = true;
-			buildingDef.TileLayer = ObjectLayer.LadderTile;
-			buildingDef.ReplacementLayer = ObjectLayer.ReplacementLadder;
-			buildingDef.ReplacementTags = new List<Tag>();
-			buildingDef.ReplacementTags.Add(GameTags.Ladders);
+			buildingDef.IsFoundation = false;
+
+			//buildingDef.DragBuild = true;
+			buildingDef.TileLayer = ObjectLayer.FoundationTile;
+			buildingDef.SceneLayer = Grid.SceneLayer.TileMain;
+
 			return buildingDef;
 		}
 
@@ -46,15 +47,24 @@ namespace StormShark.OniMods
 			LadderHatch ladder = go.AddOrGet<LadderHatch>();
 			ladder.upwardsMovementSpeedMultiplier = 1f;
 			ladder.downwardsMovementSpeedMultiplier = 1f;
+			SimCellOccupier simCellOccupier = go.AddOrGet<SimCellOccupier>();
+			simCellOccupier.doReplaceElement = false;
+
 			go.AddOrGet<AnimTileable>();
 		}
 
+		public override void DoPostConfigureComplete(GameObject go)
+		{
+			GeneratedBuildings.RemoveLoopingSounds(go);
+			//go.AddOrGet<KBoxCollider2D>();
+			go.GetComponent<KPrefabID>().AddTag(GameTags.FloorTiles);
+		}
 
 
-		public const string ID = "StormShark.LadderHatch";
-		static readonly string Name = "Ladder Hatch";
-		static readonly string Description = "A floor hatch with a ladder directly below it";
-		static readonly string Effect = "Allows Duplicants to enter enclosed rooms vertically without breaking their stride.\n\nWill catch debris that falls from above.";
+		public const string ID = "StormShark.TrapdoorLadder";
+		static readonly string Name = "Trapdoor Ladder";
+		static readonly string Description = "A tile of floor with a ladder hidden inside";
+		static readonly string Effect = "Allows Duplicants to enter enclosed rooms vertically without breaking stride.\n\nWill catch debris that falls from above.";
 		public static void Setup()
 		{
 			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.NAME", "<link=\"" + ID + "\">" + Name + "</link>");
@@ -67,12 +77,6 @@ namespace StormShark.OniMods
 
 		}
 
-		public override void DoPostConfigureComplete(GameObject go)
-		{
-
-			go.AddOrGet<ZoneTile>();
-			go.AddOrGet<KBoxCollider2D>();
-		}
 	}
 
 }

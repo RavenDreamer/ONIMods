@@ -7,8 +7,8 @@
     <ProjectGuid>{189D25E1-8651-4D1E-A734-07ECE7978D5F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LadderHatch</RootNamespace>
-    <AssemblyName>LadderHatch</AssemblyName>
+    <RootNamespace>StormShark.OniMods</RootNamespace>
+    <AssemblyName>FloorHatches</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAchievementTracker",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynchronizedTelepad", "SynchronizedTelepad\SynchronizedTelepad.csproj", "{C72CA786-6F52-4FF7-B788-6C685030EDFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LadderHatch", "LadderHatch\LadderHatch.csproj", "{189D25E1-8651-4D1E-A734-07ECE7978D5F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloorHatches", "LadderHatch\FloorHatches.csproj", "{189D25E1-8651-4D1E-A734-07ECE7978D5F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluidShipping", "FluidShipping\FluidShipping.csproj", "{A8B66578-EBA9-415B-B8EE-3C589359B8B1}"
 EndProject

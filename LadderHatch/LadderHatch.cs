@@ -21,17 +21,28 @@ namespace StormShark.OniMods
 			base.OnSpawn();
 
 			int cell = Grid.PosToCell((KMonoBehaviour)this);
-			Grid.SetSolid(cell, true, CellEventLogger.Instance.SimCellOccupierSolidChanged);
-			Game.Instance.SetDupePassableSolid(cell, true, false);
-			SimMessages.ReplaceAndDisplaceElement(cell, SimHashes.Vacuum, CellEventLogger.Instance.DoorOpen, 0.0f, -1f, byte.MaxValue, 0, -1);
+			//Grid.SetSolid(cell, true, CellEventLogger.Instance.SimCellOccupierSolidChanged);
+			Game.Instance.SetDupePassableSolid(cell, true, true);
+			Grid.HasDoor[cell] = true;
+			//Grid.HasAccessDoor[cell] = (UnityEngine.Object)this.GetComponent<AccessControl>() != (UnityEngine.Object)null;
+			SimMessages.SetCellProperties(cell, (byte)8);
+			//Grid.FakeFloor[cell] = true;
+			Pathfinding.Instance.AddDirtyNavGridCell(cell);
 		}
 
 		protected override void OnCleanUp()
 		{
 			base.OnCleanUp();
 			int cell = Grid.PosToCell((KMonoBehaviour)this);
-			Grid.SetSolid(cell, false, CellEventLogger.Instance.SimCellOccupierSolidChanged);
+			//Grid.SetSolid(cell, false, CellEventLogger.Instance.SimCellOccupierSolidChanged);
 			Game.Instance.SetDupePassableSolid(cell, false, Grid.Solid[cell]);
+			//Grid.FakeFloor[cell] = false;
+			Grid.HasDoor[cell] = false;
+			//Grid.HasAccessDoor[cell] = false;
+			Game.Instance.SetDupePassableSolid(cell, false, Grid.Solid[cell]);
+			Grid.CritterImpassable[cell] = false;
+			Grid.DupeImpassable[cell] = false;
+			Pathfinding.Instance.AddDirtyNavGridCell(cell);
 		}
 	}
 
