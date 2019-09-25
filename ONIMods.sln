@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloorHatches", "LadderHatch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluidShipping", "FluidShipping\FluidShipping.csproj", "{A8B66578-EBA9-415B-B8EE-3C589359B8B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrioritizeEverything", "PrioritizeEverything\PrioritizeEverything.csproj", "{01FA017A-056F-490A-92A2-1BFCDAD2B9CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A8B66578-EBA9-415B-B8EE-3C589359B8B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8B66578-EBA9-415B-B8EE-3C589359B8B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8B66578-EBA9-415B-B8EE-3C589359B8B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01FA017A-056F-490A-92A2-1BFCDAD2B9CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01FA017A-056F-490A-92A2-1BFCDAD2B9CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01FA017A-056F-490A-92A2-1BFCDAD2B9CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01FA017A-056F-490A-92A2-1BFCDAD2B9CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
