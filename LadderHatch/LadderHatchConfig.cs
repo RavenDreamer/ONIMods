@@ -22,7 +22,7 @@ namespace StormShark.OniMods
 			float[] tieR2 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER2;
 			string[] allMinerals = MATERIALS.ALL_METALS;
 			float melting_point = 1600f;
-			BuildLocationRule build_location_rule = BuildLocationRule.Anywhere;
+			BuildLocationRule build_location_rule = BuildLocationRule.Tile;
 			EffectorValues none = NOISE_POLLUTION.NONE;
 			BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(ID, width, height, anim, hitpoints, construction_time, tieR2, allMinerals, melting_point, build_location_rule, BUILDINGS.DECOR.PENALTY.TIER0, none, 0.2f);
 			buildingDef.Floodable = false;
@@ -31,8 +31,8 @@ namespace StormShark.OniMods
 			buildingDef.AudioCategory = "Metal";
 			buildingDef.AudioSize = "small";
 			buildingDef.BaseTimeUntilRepair = -1f;
-			buildingDef.isSolidTile = true;
-			buildingDef.IsFoundation = false;
+			//buildingDef.isSolidTile = true;
+			buildingDef.IsFoundation = true;
 
 			//buildingDef.DragBuild = true;
 			buildingDef.TileLayer = ObjectLayer.FoundationTile;
@@ -47,6 +47,7 @@ namespace StormShark.OniMods
 			LadderHatch ladder = go.AddOrGet<LadderHatch>();
 			ladder.upwardsMovementSpeedMultiplier = 1f;
 			ladder.downwardsMovementSpeedMultiplier = 1f;
+			BuildingConfigManager.Instance.IgnoreDefaultKComponent(typeof(RequiresFoundation), prefab_tag);
 			SimCellOccupier simCellOccupier = go.AddOrGet<SimCellOccupier>();
 			simCellOccupier.doReplaceElement = false;
 
@@ -56,6 +57,7 @@ namespace StormShark.OniMods
 		public override void DoPostConfigureComplete(GameObject go)
 		{
 			GeneratedBuildings.RemoveLoopingSounds(go);
+			go.AddComponent<ZoneTile>();
 			//go.AddOrGet<KBoxCollider2D>();
 			go.GetComponent<KPrefabID>().AddTag(GameTags.FloorTiles);
 		}

@@ -7,11 +7,41 @@ using UnityEngine;
 
 namespace StormShark.OniMods
 {
-	public static class WrangleLightBugPatches
+	public static class WrangleFlyerPatches
 	{
 		[HarmonyPatch(typeof(BaseLightBugConfig), MethodType.Normal)]
 		[HarmonyPatch("BaseLightBug")]
 		public static class WrangleLightBug_Patch
+		{
+			public static void Postfix(GameObject __result)
+			{
+				__result.AddOrGet<Capturable>().allowCapture = true;
+			}
+		}
+
+		[HarmonyPatch(typeof(BaseMooConfig), MethodType.Normal)]
+		[HarmonyPatch("BaseMoo")]
+		public static class WrangleMoo_Patch
+		{
+			public static void Postfix(GameObject __result)
+			{
+				__result.AddOrGet<Capturable>().allowCapture = true;
+			}
+		}
+
+		[HarmonyPatch(typeof(BaseOilFloaterConfig), MethodType.Normal)]
+		[HarmonyPatch("BaseOilFloater")]
+		public static class WrangleOilFloater_Patch
+		{
+			public static void Postfix(GameObject __result)
+			{
+				__result.AddOrGet<Capturable>().allowCapture = true;
+			}
+		}
+
+		[HarmonyPatch(typeof(BasePuftConfig), MethodType.Normal)]
+		[HarmonyPatch("BasePuft")]
+		public static class WranglePuft_Patch
 		{
 			public static void Postfix(GameObject __result)
 			{
