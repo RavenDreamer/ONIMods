@@ -18,8 +18,8 @@ public class StorageButGasesConfig : IBuildingConfig
 	{
 		string id = ID;
 		int width = 1;
-		int height = 3;
-		string anim = "storagelocker_kanim";
+		int height = 2;
+		string anim = "stormshark_canisterinserter_kanim";
 		int hitpoints = 30;
 		float construction_time = 10f;
 		float[] tieR4 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER4;
@@ -48,6 +48,7 @@ public class StorageButGasesConfig : IBuildingConfig
 		storage.storageFilters = STORAGEFILTERS.GASES;
 		storage.storageFullMargin = STORAGE.STORAGE_LOCKER_FILLED_MARGIN;
 		storage.fetchCategory = Storage.FetchCategory.GeneralStorage;
+		storage.capacityKg = 50;
 		ConduitDispenser conduitDispenser = go.AddOrGet<ConduitDispenser>();
 		conduitDispenser.conduitType = ConduitType.Gas;
 		conduitDispenser.alwaysDispense = true;

@@ -16,8 +16,8 @@ public class StorageButLiquidConfig : IBuildingConfig
 	{
 		string id = ID;
 		int width = 1;
-		int height = 3;
-		string anim = "storagelocker_kanim";
+		int height = 2;
+		string anim = "stormshark_bottleinserter_kanim";
 		int hitpoints = 30;
 		float construction_time = 10f;
 		float[] tieR4 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER4;
@@ -49,6 +49,7 @@ public class StorageButLiquidConfig : IBuildingConfig
 		ConduitDispenser conduitDispenser = go.AddOrGet<ConduitDispenser>();
 		conduitDispenser.conduitType = ConduitType.Liquid;
 		conduitDispenser.alwaysDispense = true;
+		storage.capacityKg = 1000;
 		go.AddOrGet<CopyBuildingSettings>().copyGroupTag = GameTags.StorageLocker;
 		go.AddOrGet<StorageLocker>();
 	}
