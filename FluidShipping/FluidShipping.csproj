@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OniFluidShipping</RootNamespace>
     <AssemblyName>OniFluidShipping</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,14 +55,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CanisterInserterConfig - Copy.cs" />
-    <Compile Include="CodeFile1.cs" />
-    <Compile Include="StorageButGases.cs" />
-    <Compile Include="StorageButLiquidConfig.cs" />
-    <Compile Include="StorageButGasesConfig.cs" />
-    <Compile Include="VesselInserter - Copy.cs" />
-    <Compile Include="VesselInserter.cs" />
+    <Compile Include="BottleInserterConfig.cs" />
     <Compile Include="CanisterInserterConfig.cs" />
+    <Compile Include="VesselInserter.cs" />
     <Compile Include="ModInfo.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

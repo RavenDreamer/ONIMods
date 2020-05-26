@@ -1,90 +1,84 @@
-﻿using STRINGS;
+﻿// Decompiled with JetBrains decompiler
+// Type: StorageLockerConfig
+// Assembly: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+// MVID: C4FA4E6F-758D-4D97-B8F6-20B31F856ED3
+// Assembly location: D:\Program Files (x86)\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\Assembly-CSharp.dll
+
+using StormShark.OniFluidShipping;
+using STRINGS;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using TUNING;
 using UnityEngine;
 
-
-namespace StormShark.OniFluidShipping
+public class CanisterInserterConfig : IBuildingConfig
 {
-	//public class CanisterInserterConfig : IBuildingConfig
-	//{
-	//	public const string ID = "StormShark.CanisterInserter";
-	//	static readonly string Name = "Canister Inserter";
-	//	static readonly string Description = "Canister Inserters allow contained gas to be inserted directly into a ventilation network.";
-	//	static readonly string Effect = "Loads " + UI.FormatAsLink("Gas", "ELEMENTS_GAS") + " canisters into " + UI.FormatAsLink("Pipes", "GASPIPING") + " for transport.\n\nMust be loaded by Duplicants.";
+	//public const string ID = "Gas.StorageLocker";
 
-	//	public override BuildingDef CreateBuildingDef()
-	//	{
-	//		string id = ID;
-	//		int width = 1;
-	//		int height = 3;
-	//		string anim = "gas_emptying_station_kanim";
-	//		int hitpoints = 30;
-	//		float construction_time = 60f;
-	//		float[] tieR2 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER2;
-	//		string[] refinedMetals = MATERIALS.REFINED_METALS;
-	//		float melting_point = 1600f;
-	//		BuildLocationRule build_location_rule = BuildLocationRule.OnFloor;
-	//		EffectorValues tieR1 = NOISE_POLLUTION.NOISY.TIER1;
-	//		BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, construction_mass: tieR2, construction_materials: refinedMetals,
-	//																		melting_point: melting_point, build_location_rule: build_location_rule, decor: TUNING.BUILDINGS.DECOR.PENALTY.TIER2,
-	//																		noise: tieR1, temperature_modification_mass_scale: 0.2f);
-	//		buildingDef.Floodable = false;
-	//		buildingDef.AudioCategory = "Metal";
-	//		buildingDef.Overheatable = false;
-	//		buildingDef.PermittedRotations = PermittedRotations.FlipH;
-	//		//buildingDef.OutputConduitType = ConduitType.Gas;
-	//		//buildingDef.UtilityOutputOffset = new CellOffset(0, 1);
-	//		buildingDef.ViewMode = OverlayModes.GasConduits.ID;
-	//		return buildingDef;
-	//	}
+	public override BuildingDef CreateBuildingDef()
+	{
+		string id = ID;
+		int width = 1;
+		int height = 2;
+		string anim = "stormshark_canisterinserter_kanim";
+		int hitpoints = 30;
+		float construction_time = 10f;
+		float[] tieR4 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER4;
+		string[] rawMinerals = MATERIALS.RAW_MINERALS;
+		float melting_point = 1600f;
+		BuildLocationRule build_location_rule = BuildLocationRule.OnFloor;
+		EffectorValues none = NOISE_POLLUTION.NONE;
+		BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tieR4, rawMinerals, melting_point, build_location_rule, TUNING.BUILDINGS.DECOR.PENALTY.TIER1, none, 0.2f);
+		buildingDef.Floodable = false;
+		buildingDef.AudioCategory = "Metal";
+		buildingDef.Overheatable = false;
+		buildingDef.OutputConduitType = ConduitType.Gas;
+		buildingDef.UtilityOutputOffset = new CellOffset(0, 1);
+		buildingDef.ViewMode = OverlayModes.GasConduits.ID;
+		return buildingDef;
+	}
 
-	//	public override void ConfigureBuildingTemplate(GameObject go, Tag prefab_tag)
-	//	{
+	public override void ConfigureBuildingTemplate(GameObject go, Tag prefab_tag)
+	{
+		//SoundEventVolumeCache.instance.AddVolume("storagelocker_kanim", "StorageLocker_Hit_metallic_low", NOISE_POLLUTION.NOISY.TIER1);
+		Prioritizable.AddRef(go);
+		Storage storage = go.AddOrGet<Storage>();
+		storage.showInUI = true;
+		storage.allowItemRemoval = false;
+		storage.showDescriptor = true;
+		storage.storageFilters = STORAGEFILTERS.GASES;
+		storage.storageFullMargin = STORAGE.STORAGE_LOCKER_FILLED_MARGIN;
+		storage.fetchCategory = Storage.FetchCategory.GeneralStorage;
+		storage.capacityKg = 10;
+		ConduitDispenser conduitDispenser = go.AddOrGet<ConduitDispenser>();
+		conduitDispenser.conduitType = ConduitType.Gas;
+		conduitDispenser.alwaysDispense = true;
+		go.AddOrGet<TreeFilterable>();
+		go.AddOrGet<VesselInserter>();
+	}
 
-	//		Prioritizable.AddRef(go);
-	//		Storage storage = go.AddOrGet<Storage>();
-	//		storage.fetchCategory = Storage.FetchCategory.Building;
-	//		storage.storageFilters = STORAGEFILTERS.GASES;
-	//		storage.showInUI = true;
-	//		storage.showDescriptor = true;
-	//		storage.capacityKg = 200f;
-	//		storage.allowItemRemoval = false;
-	//		ConduitDispenser conduitDispenser = go.AddOrGet<ConduitDispenser>();
-	//		conduitDispenser.conduitType = ConduitType.Liquid;
-	//		conduitDispenser.alwaysDispense = true;
-	//		go.AddOrGet<TreeFilterable>();
+	public override void DoPostConfigureComplete(GameObject go)
+	{
+		go.AddOrGetDef<StorageController.Def>();
+	}
 
-	//		ManualDeliveryKG manualDeliveryKg = go.AddOrGet<ManualDeliveryKG>();
-	//		manualDeliveryKg.SetStorage(storage);
-	//		manualDeliveryKg.requestedItemTag = GameTags.Gas;
-	//		manualDeliveryKg.refillMass = 10f;
-	//		manualDeliveryKg.capacity = storage.Capacity();
-	//		manualDeliveryKg.choreTypeIDHash = Db.Get().ChoreTypes.StorageFetch.IdHash;
-	//	}
-
-	//	public override void DoPostConfigureComplete(GameObject go)
-	//	{
-	//		//
-	//	}
-
-	//	public static void Setup()
-	//	{
-	//		Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.NAME", "<link=\"" + ID + "\">" + Name + "</link>");
-	//		Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.DESC", Description);
-	//		Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.EFFECT", Effect);
+	public const string ID = "StormShark.CanisterInserter";
+	static readonly string Name = "Canister Inserter";
+	static readonly string Description = "Canister Inserters allow contained gas to be inserted directly into a ventilation network.";
+	static readonly string Effect = "Loads " + UI.FormatAsLink("Gas", "ELEMENTS_GAS") + " canisters into " + UI.FormatAsLink("Pipes", "GASPIPING") + " for transport.\n\nMust be loaded by Duplicants.";
+	public static void Setup()
+	{
+		Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.NAME", "<link=\"" + ID + "\">" + Name + "</link>");
+		Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.DESC", Description);
+		Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.EFFECT", Effect);
 
 
-	//		int categoryIndex = TUNING.BUILDINGS.PLANORDER.FindIndex(x => x.category == "HVAC");
-	//		(TUNING.BUILDINGS.PLANORDER[categoryIndex].data as IList<String>)?.Add(ID);
+		int categoryIndex = TUNING.BUILDINGS.PLANORDER.FindIndex(x => x.category == "HVAC");
+		(TUNING.BUILDINGS.PLANORDER[categoryIndex].data as IList<String>)?.Add(ID);
 
-	//		var TechGroup = new List<string>(Database.Techs.TECH_GROUPING["Distillation"]) { };
-	//		TechGroup.Add(ID);
-	//		Database.Techs.TECH_GROUPING["Distillation"] = TechGroup.ToArray();
+		var TechGroup = new List<string>(Database.Techs.TECH_GROUPING["Distillation"]) { };
+		TechGroup.Add(ID);
+		Database.Techs.TECH_GROUPING["Distillation"] = TechGroup.ToArray();
 
-	//	}
-	//}
+	}
 }

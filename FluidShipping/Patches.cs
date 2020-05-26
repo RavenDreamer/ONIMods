@@ -10,9 +10,8 @@ namespace StormShark.OniFluidShipping
 		{
 			public static void Prefix()
 			{
-				StorageButGasesConfig.Setup();
-				StorageButLiquidConfig.Setup();
-				//Debug.Log("Done the Dirty");
+				BottleInserterConfig.Setup();
+				CanisterInserterConfig.Setup();
 			}
 		}
 	}
