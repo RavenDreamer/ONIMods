@@ -10,7 +10,7 @@ using UnityEngine;
 namespace StormShark.OniFluidShipping
 {
 	[SerializationConfig(MemberSerialization.OptIn)]
-	public class VesselInserter : StateMachineComponent<VesselInserter.StatesInstance>, IEffectDescriptor
+	public class VesselInserter : StateMachineComponent<VesselInserter.StatesInstance>, IGameObjectEffectDescriptor
 	{
 		private static readonly EventSystem.IntraObjectHandler<VesselInserter> OnRefreshUserMenuDelegate = new EventSystem.IntraObjectHandler<VesselInserter>((Action<VesselInserter, object>)((component, data) => component.OnRefreshUserMenu(data)));
 		private static readonly EventSystem.IntraObjectHandler<VesselInserter> OnCopySettingsDelegate = new EventSystem.IntraObjectHandler<VesselInserter>((System.Action<VesselInserter, object>)((component, data) => component.OnCopySettings(data)));
@@ -30,10 +30,11 @@ namespace StormShark.OniFluidShipping
 			this.Subscribe<VesselInserter>(-905833192, VesselInserter.OnCopySettingsDelegate);
 		}
 
-		public List<Descriptor> GetDescriptors(BuildingDef def)
+		public List<Descriptor> GetDescriptors(GameObject go)
 		{
 			return (List<Descriptor>)null;
 		}
+
 
 		private void OnChangeAllowManualPumpingStationFetching()
 		{
@@ -94,7 +95,7 @@ namespace StormShark.OniFluidShipping
 					else
 						forbidden_tags = new Tag[0];
 					Storage component2 = this.GetComponent<Storage>();
-					this.chore = new FetchChore(Db.Get().ChoreTypes.StorageFetch, component2, component2.Capacity(), this.GetComponent<TreeFilterable>().GetTags(),
+					this.chore = new FetchChore(Db.Get().ChoreTypes.StorageFetch, component2, component2.RemainingCapacity(), this.GetComponent<TreeFilterable>().GetTags(),
 						(Tag[])null, forbidden_tags, (ChoreProvider)null, true, (System.Action<Chore>)null, (System.Action<Chore>)null, (System.Action<Chore>)null,
 						FetchOrder2.OperationalRequirement.Operational, 0);
 				}
@@ -155,6 +156,20 @@ namespace StormShark.OniFluidShipping
 				//do nothing.
 			}
 
+			internal void CheckChore(float dt)
+			{
+				if (this.GetComponent<Storage>().IsFull() == false)
+				{
+					if (this.chore == null)
+					{
+						CreateChore();
+					}
+				}
+				else
+				{
+					CancelChore();
+				}
+			}
 		}
 
 		public class States : GameStateMachine<VesselInserter.States, VesselInserter.StatesInstance, VesselInserter>
@@ -195,6 +210,7 @@ namespace StormShark.OniFluidShipping
 					.Exit("CancelChore", (StateMachine<VesselInserter.States, VesselInserter.StatesInstance, VesselInserter, object>.State.Callback)(smi => smi.CancelChore()))
 					.PlayAnim("on");
 				this.emptying.TagTransition(GameTags.Operational, this.unoperational, true)
+					.Update("CheckBonusDeliveries", (System.Action<VesselInserter.StatesInstance, float>)((smi, dt) => smi.CheckChore(dt)))
 					.EventTransition(GameHashes.OnStorageChange, this.waitingfordelivery,
 						(StateMachine<VesselInserter.States, VesselInserter.StatesInstance, VesselInserter, object>.Transition.ConditionCallback)
 						(smi => smi.GetComponent<Storage>().MassStored() == 0));
