@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using TUNING;
 using UnityEngine;
 
+using PeterHan.PLib;
 
 namespace StormShark.OniFluidShipping
 {
@@ -19,7 +20,7 @@ namespace StormShark.OniFluidShipping
 
 		public override BuildingDef CreateBuildingDef()
 		{
-			string id = ID;
+			string id = S_CI_ID;
 			int width = 1;
 			int height = 2;
 			string anim = "stormshark_canisterinserter_kanim";
@@ -64,24 +65,17 @@ namespace StormShark.OniFluidShipping
 			go.AddOrGetDef<StorageController.Def>();
 		}
 
-		public const string ID = "StormShark.CanisterInserter";
+		public const string S_CI_ID = "StormShark.CanisterInserter";
 		static readonly string Name = "Canister Inserter";
 		static readonly string Description = "Canister Inserters allow contained gas to be inserted directly into a ventilation network.";
 		static readonly string Effect = "Loads " + UI.FormatAsLink("Gas", "ELEMENTS_GAS") + " canisters into " + UI.FormatAsLink("Pipes", "GASPIPING") + " for transport.\n\nMust be loaded by Duplicants.";
 		public static void Setup()
 		{
-			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.NAME", "<link=\"" + ID + "\">" + Name + "</link>");
-			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.DESC", Description);
-			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.EFFECT", Effect);
+			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{S_CI_ID.ToUpperInvariant()}.NAME", "<link=\"" + S_CI_ID + "\">" + Name + "</link>");
+			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{S_CI_ID.ToUpperInvariant()}.DESC", Description);
+			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{S_CI_ID.ToUpperInvariant()}.EFFECT", Effect);
 
-
-			int categoryIndex = TUNING.BUILDINGS.PLANORDER.FindIndex(x => x.category == "HVAC");
-			(TUNING.BUILDINGS.PLANORDER[categoryIndex].data as IList<String>)?.Add(ID);
-
-			var TechGroup = new List<string>(Database.Techs.TECH_GROUPING["Distillation"]) { };
-			TechGroup.Add(ID);
-			Database.Techs.TECH_GROUPING["Distillation"] = TechGroup.ToArray();
-
+			ModUtil.AddBuildingToPlanScreen("HVAC", S_CI_ID);
 		}
 	}
 }

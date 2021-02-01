@@ -16,7 +16,7 @@ namespace StormShark.OniFluidShipping
 	{
 		public override BuildingDef CreateBuildingDef()
 		{
-			string id = ID;
+			string id = S_BI_ID;
 			int width = 1;
 			int height = 2;
 			string anim = "stormshark_bottleinserter_kanim";
@@ -59,24 +59,17 @@ namespace StormShark.OniFluidShipping
 			//go.AddOrGetDef<StorageController.Def>();
 		}
 
-		public const string ID = "StormShark.BottleInserter";
+		public const string S_BI_ID = "StormShark.BottleInserter";
 		static readonly string Name = "Bottle Inserter";
 		static readonly string Description = "Bottle Inserters allow contained liquids to be inserted directly into a pipe network.";
 		static readonly string Effect = "Loads " + UI.FormatAsLink("Liquid", "ELEMENTS_LIQUID") + " bottles into " + UI.FormatAsLink("Pipes", "LIQUIDPIPING") + " for transport.\n\nMust be loaded by Duplicants.";
 		public static void Setup()
 		{
-			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.NAME", "<link=\"" + ID + "\">" + Name + "</link>");
-			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.DESC", Description);
-			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.EFFECT", Effect);
+			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{S_BI_ID.ToUpperInvariant()}.NAME", "<link=\"" + S_BI_ID + "\">" + Name + "</link>");
+			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{S_BI_ID.ToUpperInvariant()}.DESC", Description);
+			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{S_BI_ID.ToUpperInvariant()}.EFFECT", Effect);
 
-
-			int categoryIndex = TUNING.BUILDINGS.PLANORDER.FindIndex(x => x.category == "Plumbing");
-			(TUNING.BUILDINGS.PLANORDER[categoryIndex].data as IList<String>)?.Add(ID);
-
-			var TechGroup = new List<string>(Database.Techs.TECH_GROUPING["ImprovedLiquidPiping"]) { };
-			TechGroup.Add(ID);
-			Database.Techs.TECH_GROUPING["ImprovedLiquidPiping"] = TechGroup.ToArray();
-
+			ModUtil.AddBuildingToPlanScreen("Plumbing", S_BI_ID);
 		}
 	}
 }
