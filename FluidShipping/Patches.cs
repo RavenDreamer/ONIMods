@@ -27,6 +27,7 @@ namespace StormShark.OniFluidShipping
 
 				BottleInserterConfig.Setup();
 				CanisterInserterConfig.Setup();
+				BottleFillerConfig.Setup();
 			}
 		}
 
@@ -37,8 +38,9 @@ namespace StormShark.OniFluidShipping
 		{
 			public static void Postfix()
 			{
-				//find tech with ImprovedLiquidPiping. Add s_bi_id to that tech.
+				//find tech with ImprovedLiquidPiping. Add s_bi_id and s_bf_id to that tech.
 				Db.Get().Techs.Get("ImprovedLiquidPiping").unlockedItemIDs.Add(BottleInserterConfig.S_BI_ID);
+				Db.Get().Techs.Get("ImprovedLiquidPiping").unlockedItemIDs.Add(BottleFillerConfig.S_BF_ID);
 				//find tech with ImprovedGasPiping. Add s_ci_id to that tech.
 				Db.Get().Techs.Get("ImprovedGasPiping").unlockedItemIDs.Add(CanisterInserterConfig.S_CI_ID);
 			}

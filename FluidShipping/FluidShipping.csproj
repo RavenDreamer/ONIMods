@@ -64,9 +64,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BottleFillerConfig.cs" />
     <Compile Include="BottleInserterConfig.cs" />
     <Compile Include="CanisterInserterConfig.cs" />
     <Compile Include="FluidShippingOptions.cs" />
+    <Compile Include="BottleFiller.cs" />
+    <Compile Include="LiquidBottler.cs" />
     <Compile Include="VesselInserter.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

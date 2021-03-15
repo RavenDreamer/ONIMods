@@ -210,7 +210,7 @@ namespace StormShark.OniFluidShipping
 					.Exit("CancelChore", (StateMachine<VesselInserter.States, VesselInserter.StatesInstance, VesselInserter, object>.State.Callback)(smi => smi.CancelChore()))
 					.PlayAnim("on");
 				this.emptying.TagTransition(GameTags.Operational, this.unoperational, true)
-					.Update("CheckBonusDeliveries", (System.Action<VesselInserter.StatesInstance, float>)((smi, dt) => smi.CheckChore(dt)))
+					//.Update("CheckBonusDeliveries", (System.Action<VesselInserter.StatesInstance, float>)((smi, dt) => smi.CheckChore(dt)))
 					.EventTransition(GameHashes.OnStorageChange, this.waitingfordelivery,
 						(StateMachine<VesselInserter.States, VesselInserter.StatesInstance, VesselInserter, object>.Transition.ConditionCallback)
 						(smi => smi.GetComponent<Storage>().MassStored() == 0));
