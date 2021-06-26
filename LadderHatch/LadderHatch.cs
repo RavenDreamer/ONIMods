@@ -26,7 +26,7 @@ namespace StormShark.OniMods
 			Grid.HasDoor[cell] = true;
 			//Grid.HasAccessDoor[cell] = (UnityEngine.Object)this.GetComponent<AccessControl>() != (UnityEngine.Object)null;
 			SimMessages.SetCellProperties(cell, (byte)8);
-			//Grid.FakeFloor[cell] = true;
+			Grid.FakeFloor[cell] = true;
 			Pathfinding.Instance.AddDirtyNavGridCell(cell);
 		}
 
@@ -36,7 +36,7 @@ namespace StormShark.OniMods
 			int cell = Grid.PosToCell((KMonoBehaviour)this);
 			//Grid.SetSolid(cell, false, CellEventLogger.Instance.SimCellOccupierSolidChanged);
 			Game.Instance.SetDupePassableSolid(cell, false, Grid.Solid[cell]);
-			//Grid.FakeFloor[cell] = false;
+			Grid.FakeFloor[cell] = false;
 			Grid.HasDoor[cell] = false;
 			//Grid.HasAccessDoor[cell] = false;
 			Game.Instance.SetDupePassableSolid(cell, false, Grid.Solid[cell]);

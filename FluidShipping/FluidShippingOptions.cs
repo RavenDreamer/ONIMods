@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-
-
-using Newtonsoft.Json;
-using PeterHan.PLib;
+﻿using Newtonsoft.Json;
+using PeterHan.PLib.Core;
+using PeterHan.PLib.Options;
 
 namespace StormShark.OniFluidShipping
 {
 	/// <summary>
 	/// The options class used for Claustrophobia.
 	/// </summary>
-	[ModInfo("Fluid Shipping", "https://github.com/RavenDreamer/ONIMods", "previewv2.png")]
+	[ModInfo("https://github.com/RavenDreamer/ONIMods", "previewv2.png")]
 	[JsonObject(MemberSerialization.OptIn)]
 	public sealed class FluidShippingOptions
 	{

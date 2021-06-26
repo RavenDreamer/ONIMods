@@ -73,10 +73,7 @@ namespace StormShark.OniMods
 			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.DESC", Description);
 			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{ID.ToUpperInvariant()}.EFFECT", Effect);
 
-
-			int categoryIndex = TUNING.BUILDINGS.PLANORDER.FindIndex(x => x.category == "Base");
-			(TUNING.BUILDINGS.PLANORDER[categoryIndex].data as IList<String>)?.Add(ID);
-
+			ModUtil.AddBuildingToPlanScreen("Base", ID);
 		}
 
 	}

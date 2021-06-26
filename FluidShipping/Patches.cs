@@ -1,20 +1,26 @@
-﻿using Harmony;
-using PeterHan.PLib;
+﻿using HarmonyLib;
+using KMod;
+using PeterHan.PLib.Core;
 using PeterHan.PLib.Options;
 
 namespace StormShark.OniFluidShipping
 {
-	public static class BuildingGenerationPatches
+	public class BuildingGenerationPatches : UserMod2
 	{
-		public static void OnLoad()
+		public override void OnLoad(Harmony harmony)
 		{
+			base.OnLoad(harmony);
+
 			PUtil.InitLibrary();
-			POptions.RegisterOptions(typeof(FluidShippingOptions));
+			pOption = new POptions();
+
+			pOption.RegisterOptions(this, typeof(FluidShippingOptions));
 
 			Options = new FluidShippingOptions();
 		}
 
 		internal static FluidShippingOptions Options { get; private set; }
+		internal static POptions pOption { get; private set; }
 
 		[HarmonyPatch(typeof(GeneratedBuildings))]
 		[HarmonyPatch("LoadGeneratedBuildings")]

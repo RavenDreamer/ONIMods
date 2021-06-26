@@ -1,0 +1,15 @@
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\bin\Debug\PlantHotfix.dll
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\bin\Debug\PlantHotfix.pdb
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\bin\Debug\0Harmony.dll
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\bin\Debug\Assembly-CSharp.dll
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\bin\Debug\UnityEngine.CoreModule.dll
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\bin\Debug\UnityEngine.UI.dll
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\bin\Debug\UnityEngine.UIModule.dll
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\bin\Debug\Unity.TextMeshPro.dll
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\bin\Debug\UnityEngine.ImageConversionModule.dll
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\obj\Debug\PlantHotfix.csprojAssemblyReference.cache
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\obj\Debug\PlantHotfix.csproj.CoreCompileInputs.cache
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\obj\Debug\PlantHotfix.csproj.CopyComplete
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\obj\Debug\PlantHotfix.dll
+C:\Users\Nethe\Documents\Visual Studio 2017\ONIMods\PlantHotfix\obj\Debug\PlantHotfix.pdb

@@ -16,9 +16,9 @@ namespace StormShark.OniFluidShipping
 		private static readonly EventSystem.IntraObjectHandler<VesselInserter> OnCopySettingsDelegate = new EventSystem.IntraObjectHandler<VesselInserter>((System.Action<VesselInserter, object>)((component, data) => component.OnCopySettings(data)));
 		public float emptyRate = 10f;
 		[SerializeField]
-		public Color noFilterTint = (Color)FilteredStorage.NO_FILTER_TINT;
+		public static Color noFilterTint = (Color32)new Color(0.5019608f, 0.5019608f, 0.5019608f, 1f);
 		[SerializeField]
-		public Color filterTint = (Color)FilteredStorage.FILTER_TINT;
+		public static Color filterTint = (Color32)Color.white;
 		[Serialize]
 		public bool allowManualPumpingStationFetching;
 
@@ -81,11 +81,11 @@ namespace StormShark.OniFluidShipping
 				Tag[] tags = this.GetComponent<TreeFilterable>().GetTags();
 				if (tags == null || tags.Length == 0)
 				{
-					component1.TintColour = (Color32)this.master.noFilterTint;
+					component1.TintColour = (Color32)VesselInserter.noFilterTint;
 				}
 				else
 				{
-					component1.TintColour = (Color32)this.master.filterTint;
+					component1.TintColour = (Color32)VesselInserter.filterTint;
 					Tag[] forbidden_tags;
 					if (!this.master.allowManualPumpingStationFetching)
 						forbidden_tags = new Tag[1]
