@@ -1,4 +1,5 @@
-﻿using Harmony;
+﻿using HarmonyLib;
+using KMod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace StormShark.OniMods
 {
-	public static class WrangleFlyerPatches
+	public class WrangleFlyerPatches : UserMod2
 	{
 		[HarmonyPatch(typeof(BaseLightBugConfig), MethodType.Normal)]
 		[HarmonyPatch("BaseLightBug")]

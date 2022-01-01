@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 
 namespace StormShark.OniMods
 {
-	public static class LadderHatchPatches
+	public class LadderHatchPatches : KMod.UserMod2
 	{
 		[HarmonyPatch(typeof(GeneratedBuildings))]
 		[HarmonyPatch("LoadGeneratedBuildings")]
