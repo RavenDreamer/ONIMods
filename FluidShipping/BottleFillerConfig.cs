@@ -21,7 +21,7 @@ namespace StormShark.OniFluidShipping
 			string id = S_BF_ID;
 			int width = 3;
 			int height = 2;
-			string anim = "gas_bottler_kanim";
+			string anim = "stormshark_liq_bottler_kanim";
 			int hitpoints = 100;
 			float construction_time = 120f;
 			float[] tieR4 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER4;
