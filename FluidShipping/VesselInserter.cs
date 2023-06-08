@@ -63,7 +63,7 @@ namespace StormShark.OniFluidShipping
 			public StatesInstance(VesselInserter smi)
 			  : base(smi)
 			{
-				this.master.GetComponent<TreeFilterable>().OnFilterChanged += new System.Action<Tag[]>(this.OnFilterChanged);
+				this.master.GetComponent<TreeFilterable>().OnFilterChanged += new Action<HashSet<Tag>>(this.OnFilterChanged);
 				this.meter = new MeterController((KAnimControllerBase)this.GetComponent<KBatchedAnimController>(), "meter_target", nameof(meter), Meter.Offset.Infront, Grid.SceneLayer.NoLayer, new string[3]
 				{
 		"meter_target",
@@ -78,8 +78,8 @@ namespace StormShark.OniFluidShipping
 			public void CreateChore()
 			{
 				KBatchedAnimController component1 = this.GetComponent<KBatchedAnimController>();
-				Tag[] tags = this.GetComponent<TreeFilterable>().GetTags();
-				if (tags == null || tags.Length == 0)
+				HashSet<Tag> tags = this.GetComponent<TreeFilterable>().GetTags();
+				if (tags == null || tags.Count == 0)
 				{
 					component1.TintColour = (Color32)VesselInserter.noFilterTint;
 				}
@@ -96,8 +96,8 @@ namespace StormShark.OniFluidShipping
 						forbidden_tags = new Tag[0];
 					Storage component2 = this.GetComponent<Storage>();
 					this.chore = new FetchChore(Db.Get().ChoreTypes.StorageFetch, component2, component2.RemainingCapacity(), this.GetComponent<TreeFilterable>().GetTags(),
-						(Tag[])null, forbidden_tags, (ChoreProvider)null, true, (System.Action<Chore>)null, (System.Action<Chore>)null, (System.Action<Chore>)null,
-						FetchOrder2.OperationalRequirement.Operational, 0);
+						0, null, forbidden_tags, (ChoreProvider)null, true, (System.Action<Chore>)null, (System.Action<Chore>)null, (System.Action<Chore>)null,
+						Operational.State.Operational, 0);
 				}
 			}
 
@@ -114,7 +114,7 @@ namespace StormShark.OniFluidShipping
 				this.GoTo((StateMachine.BaseState)this.sm.unoperational);
 			}
 
-			private void OnFilterChanged(Tag[] tags)
+			private void OnFilterChanged(HashSet<Tag> tags)
 			{
 				this.RefreshChore();
 			}

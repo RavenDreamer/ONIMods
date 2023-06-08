@@ -46,6 +46,7 @@ namespace StormShark.OniFluidShipping
 			storage.showDescriptor = true;
 			storage.storageFilters = STORAGEFILTERS.LIQUIDS;
 			storage.storageFullMargin = STORAGE.STORAGE_LOCKER_FILLED_MARGIN;
+			storage.SetDefaultStoredItemModifiers(Storage.StandardSealedStorage);
 			ConduitDispenser conduitDispenser = go.AddOrGet<ConduitDispenser>();
 			conduitDispenser.conduitType = ConduitType.Liquid;
 			conduitDispenser.alwaysDispense = true;

@@ -50,6 +50,7 @@ namespace StormShark.OniFluidShipping
 			storage.allowItemRemoval = false;
 			storage.showDescriptor = true;
 			storage.storageFilters = STORAGEFILTERS.GASES;
+			storage.SetDefaultStoredItemModifiers(Storage.StandardSealedStorage);
 			//storage.storageFullMargin = STORAGE.STORAGE_LOCKER_FILLED_MARGIN;
 			//storage.fetchCategory = Storage.FetchCategory.GeneralStorage;
 			storage.capacityKg = BuildingGenerationPatches.Options.CanisterVolume; //10 kg default
