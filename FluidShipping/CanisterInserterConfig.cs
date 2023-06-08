@@ -32,7 +32,7 @@ namespace StormShark.OniFluidShipping
 			BuildLocationRule build_location_rule = BuildLocationRule.OnFloor;
 			EffectorValues none = NOISE_POLLUTION.NONE;
 			BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tieR4, materials, melting_point, build_location_rule, TUNING.BUILDINGS.DECOR.PENALTY.TIER1, none, 0.2f);
-			buildingDef.Floodable = false;
+			buildingDef.Floodable = true;
 			buildingDef.AudioCategory = "Metal";
 			buildingDef.Overheatable = false;
 			buildingDef.OutputConduitType = ConduitType.Gas;
