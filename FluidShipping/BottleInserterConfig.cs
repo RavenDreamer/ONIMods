@@ -34,6 +34,14 @@ namespace StormShark.OniFluidShipping
 			buildingDef.OutputConduitType = ConduitType.Liquid;
 			buildingDef.UtilityOutputOffset = new CellOffset(0, 1);
 			buildingDef.ViewMode = OverlayModes.LiquidConduits.ID;
+			if(BuildingGenerationPatches.Options.BottleInserterRequiresPower)
+			{
+				buildingDef.RequiresPowerInput = true;
+				buildingDef.EnergyConsumptionWhenActive = 120f; // half of liquid pump
+				buildingDef.ExhaustKilowattsWhenActive = 0f;
+				buildingDef.SelfHeatKilowattsWhenActive = 1f; // half of liquid pump
+				buildingDef.PowerInputOffset = new CellOffset(0, 0);
+			}
 			return buildingDef;
 		}
 
@@ -53,6 +61,8 @@ namespace StormShark.OniFluidShipping
 			storage.capacityKg = BuildingGenerationPatches.Options.BottleVolume; //200 kg default
 			go.AddOrGet<TreeFilterable>();
 			go.AddOrGet<VesselInserter>();
+			if(BuildingGenerationPatches.Options.BottleInserterRequiresPower)
+				go.AddOrGet<ConduitDispenser>().alwaysDispense = false;
 		}
 
 		public override void DoPostConfigureComplete(GameObject go)

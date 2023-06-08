@@ -38,6 +38,14 @@ namespace StormShark.OniFluidShipping
 			buildingDef.OutputConduitType = ConduitType.Gas;
 			buildingDef.UtilityOutputOffset = new CellOffset(0, 1);
 			buildingDef.ViewMode = OverlayModes.GasConduits.ID;
+			if(BuildingGenerationPatches.Options.CanisterInserterRequiresPower)
+			{
+				buildingDef.RequiresPowerInput = true;
+				buildingDef.EnergyConsumptionWhenActive = 120f; // half of gas pump
+				buildingDef.ExhaustKilowattsWhenActive = 0f;
+				buildingDef.SelfHeatKilowattsWhenActive = 0; // 0 just like gas pump
+				buildingDef.PowerInputOffset = new CellOffset(0, 0);
+			}
 			return buildingDef;
 		}
 
@@ -59,6 +67,8 @@ namespace StormShark.OniFluidShipping
 			conduitDispenser.alwaysDispense = true;
 			go.AddOrGet<TreeFilterable>();
 			go.AddOrGet<VesselInserter>();
+			if(BuildingGenerationPatches.Options.CanisterInserterRequiresPower)
+				go.AddOrGet<ConduitDispenser>().alwaysDispense = false;
 		}
 
 		public override void DoPostConfigureComplete(GameObject go)
