@@ -23,11 +23,11 @@ namespace StormShark.OniFluidShipping
 			int hitpoints = 30;
 			float construction_time = 10f;
 			float[] tieR4 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER4;
-			string[] rawMinerals = MATERIALS.RAW_MINERALS;
+			string[] materials = MATERIALS.ALL_METALS;
 			float melting_point = 1600f;
 			BuildLocationRule build_location_rule = BuildLocationRule.OnFloor;
 			EffectorValues none = NOISE_POLLUTION.NONE;
-			BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tieR4, rawMinerals, melting_point, build_location_rule, TUNING.BUILDINGS.DECOR.PENALTY.TIER1, none, 0.2f);
+			BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tieR4, materials, melting_point, build_location_rule, TUNING.BUILDINGS.DECOR.PENALTY.TIER1, none, 0.2f);
 			buildingDef.Floodable = false;
 			buildingDef.AudioCategory = "Metal";
 			buildingDef.Overheatable = false;
