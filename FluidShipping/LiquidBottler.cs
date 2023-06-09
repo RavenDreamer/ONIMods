@@ -53,7 +53,10 @@ namespace StormShark.OniFluidShipping
 				{
 					smi.master.storage.allowItemRemoval = true;
 					foreach (GameObject go in smi.master.storage.items)
+					{
+						go.GetComponent<KPrefabID>().AddTag(GameTags.LiquidSource);
 						go.Trigger(-778359855, (object)smi.master.storage);
+					}
 				})).Exit((StateMachine<LiquidBottler.Controller, LiquidBottler.Controller.Instance, LiquidBottler, object>.State.Callback)(smi =>
 				{
 					smi.master.storage.allowItemRemoval = false;
