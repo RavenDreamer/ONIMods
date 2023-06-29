@@ -97,7 +97,7 @@ namespace StormShark.OniFluidShipping
 			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{S_BF_ID.ToUpperInvariant()}.DESC", Description);
 			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{S_BF_ID.ToUpperInvariant()}.EFFECT", Effect);
 
-			ModUtil.AddBuildingToPlanScreen("Plumbing", S_BF_ID);
+			ModUtil.AddBuildingToPlanScreen("Plumbing", S_BF_ID, "valves");
 		}
 	}
 }
