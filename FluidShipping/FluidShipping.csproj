@@ -114,6 +114,9 @@
     <Content Include="lib\UnityEngine.UIModule.dll" />
     <Content Include="UnityEngine.TextRenderingModule.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="anim\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
