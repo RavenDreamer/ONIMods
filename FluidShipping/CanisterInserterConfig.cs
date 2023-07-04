@@ -27,17 +27,25 @@ namespace StormShark.OniFluidShipping
 			int hitpoints = 30;
 			float construction_time = 10f;
 			float[] tieR4 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER4;
-			string[] rawMinerals = MATERIALS.RAW_MINERALS;
+			string[] buildMaterials = MATERIALS.REFINED_METALS;
 			float melting_point = 1600f;
 			BuildLocationRule build_location_rule = BuildLocationRule.OnFloor;
 			EffectorValues none = NOISE_POLLUTION.NONE;
-			BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tieR4, rawMinerals, melting_point, build_location_rule, TUNING.BUILDINGS.DECOR.PENALTY.TIER1, none, 0.2f);
+			BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tieR4, buildMaterials, melting_point, build_location_rule, TUNING.BUILDINGS.DECOR.PENALTY.TIER1, none, 0.2f);
 			buildingDef.Floodable = false;
 			buildingDef.AudioCategory = "Metal";
 			buildingDef.Overheatable = false;
 			buildingDef.OutputConduitType = ConduitType.Gas;
 			buildingDef.UtilityOutputOffset = new CellOffset(0, 1);
 			buildingDef.ViewMode = OverlayModes.GasConduits.ID;
+			if (BuildingGenerationPatches.Options.CanisterInserterPowerRequirement > 0)
+			{
+				buildingDef.RequiresPowerInput = true;
+				buildingDef.EnergyConsumptionWhenActive = BuildingGenerationPatches.Options.CanisterInserterPowerRequirement;
+				buildingDef.ExhaustKilowattsWhenActive = 0f;
+				buildingDef.SelfHeatKilowattsWhenActive = 1f; // half of liquid pump
+				buildingDef.PowerInputOffset = new CellOffset(0, 0);
+			}
 			return buildingDef;
 		}
 
@@ -59,6 +67,10 @@ namespace StormShark.OniFluidShipping
 			conduitDispenser.alwaysDispense = true;
 			go.AddOrGet<TreeFilterable>();
 			go.AddOrGet<VesselInserter>();
+			if (BuildingGenerationPatches.Options.CanisterInserterPowerRequirement > 0)
+			{
+				go.AddOrGet<ConduitDispenser>().alwaysDispense = false;
+			}
 		}
 
 		public override void DoPostConfigureComplete(GameObject go)
@@ -76,7 +88,7 @@ namespace StormShark.OniFluidShipping
 			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{S_CI_ID.ToUpperInvariant()}.DESC", Description);
 			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{S_CI_ID.ToUpperInvariant()}.EFFECT", Effect);
 
-			ModUtil.AddBuildingToPlanScreen("HVAC", S_CI_ID);
+			ModUtil.AddBuildingToPlanScreen("HVAC", S_CI_ID, "valves");
 		}
 	}
 }

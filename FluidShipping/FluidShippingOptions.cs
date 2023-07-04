@@ -19,9 +19,17 @@ namespace StormShark.OniFluidShipping
 		[JsonProperty]
 		public float BottleVolume { get; set; }
 
-		[Option("Bottle Filler Volume", "Internal storage volume of Bottle Filler(Kg).")]
+		[Option("Bottle Filler Volume", "Internal storage volume of Bottle Filler (Kg).")]
 		[JsonProperty]
 		public float BottleFillerVolume { get; set; }
+
+		[Option("Canister Inserter Power Requirement", "Power requirement of Canister Inserter (W).")]
+		[JsonProperty]
+		public float CanisterInserterPowerRequirement { get; set; }
+
+		[Option("Bottle Filler Power Requirement", "Power requirement of Bottle Filler (W).")]
+		[JsonProperty]
+		public float BottleFillerPowerRequirement { get; set; }
 
 
 		public FluidShippingOptions()
@@ -29,11 +37,14 @@ namespace StormShark.OniFluidShipping
 			CanisterVolume = 10;
 			BottleVolume = 200;
 			BottleFillerVolume = 200;
+			CanisterInserterPowerRequirement = 0;
+			BottleFillerPowerRequirement = 0;
+
 		}
 
 		public override string ToString()
 		{
-			return "FluidShippingOptions[liquidKg={0:D},gasKg{1:D},liquidFillerKg={2:D}]".F(CanisterVolume, BottleVolume, BottleFillerVolume);
+			return "FluidShippingOptions[gasKg={0:D},liquidKg{1:D},liquidFillerKg={2:D},canisterWatts={3:D},bottleWatts={4:D}]".F(CanisterVolume, BottleVolume, BottleFillerVolume, CanisterInserterPowerRequirement, BottleFillerPowerRequirement);
 		}
 	}
 }

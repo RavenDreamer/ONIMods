@@ -88,9 +88,10 @@ namespace StormShark.OniFluidShipping
 					component1.TintColour = (Color32)VesselInserter.filterTint;
 					Tag[] forbidden_tags;
 					if (!this.master.allowManualPumpingStationFetching)
-						forbidden_tags = new Tag[1]
+						forbidden_tags = new Tag[2]
 						{
-							GameTags.LiquidSource
+							GameTags.LiquidSource,
+							GameTags.GasSource
 						};
 					else
 						forbidden_tags = new Tag[0];

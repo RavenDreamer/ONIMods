@@ -16,7 +16,6 @@ namespace StormShark.OniFluidShipping
 
 
 		private BottleFiller.WorkSession session;
-		int infoCount = 0;
 
 		protected override void OnPrefabInit()
 		{
@@ -187,13 +186,6 @@ namespace StormShark.OniFluidShipping
 				this.amountPerTick = 0.0f;
 				this.diseaseInfo = SimUtil.DiseaseInfo.Invalid;
 			}
-		}
-
-		private struct LiquidInfo
-		{
-			public float amount;
-			public Element element;
-			public SubstanceChunk source;
 		}
 	}
 }

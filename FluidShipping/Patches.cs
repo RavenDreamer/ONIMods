@@ -31,9 +31,10 @@ namespace StormShark.OniFluidShipping
 				var newOptions = POptions.ReadSettings<FluidShippingOptions>();
 				if (newOptions != null) Options = newOptions;
 
+				BottleFillerConfig.Setup();
 				BottleInserterConfig.Setup();
 				CanisterInserterConfig.Setup();
-				BottleFillerConfig.Setup();
+
 			}
 		}
 
