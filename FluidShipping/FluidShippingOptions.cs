@@ -9,6 +9,7 @@ namespace StormShark.OniFluidShipping
 	/// </summary>
 	[ModInfo("https://github.com/RavenDreamer/ONIMods", "previewv2.png")]
 	[JsonObject(MemberSerialization.OptIn)]
+	[RestartRequired]
 	public sealed class FluidShippingOptions
 	{
 		[Option("Canister Inserter Volume", "Internal storage volume of Canister Inserter (Kg).")]
