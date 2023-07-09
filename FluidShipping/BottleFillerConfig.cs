@@ -24,12 +24,12 @@ namespace StormShark.OniFluidShipping
 			string anim = "stormshark_liquidbottler_kanim";
 			int hitpoints = 100;
 			float construction_time = 120f;
-			float[] tieR4 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER4;
+			float[] tier3 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER3;
 			string[] rawMinerals = MATERIALS.ALL_METALS;
 			float melting_point = 800f;
 			BuildLocationRule build_location_rule = BuildLocationRule.OnFloor;
 			EffectorValues none = NOISE_POLLUTION.NONE;
-			BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tieR4, rawMinerals, melting_point, build_location_rule, TUNING.BUILDINGS.DECOR.PENALTY.TIER1, none, 0.2f);
+			BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tier3, rawMinerals, melting_point, build_location_rule, TUNING.BUILDINGS.DECOR.PENALTY.TIER1, none, 0.2f);
 			buildingDef.Floodable = false;
 			buildingDef.AudioCategory = "HollowMetal";
 			buildingDef.Overheatable = false;
@@ -97,7 +97,7 @@ namespace StormShark.OniFluidShipping
 			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{S_BF_ID.ToUpperInvariant()}.DESC", Description);
 			Strings.Add($"STRINGS.BUILDINGS.PREFABS.{S_BF_ID.ToUpperInvariant()}.EFFECT", Effect);
 
-			ModUtil.AddBuildingToPlanScreen("Plumbing", S_BF_ID);
+			ModUtil.AddBuildingToPlanScreen("Plumbing", S_BF_ID, "valves");
 		}
 	}
 }

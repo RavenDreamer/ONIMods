@@ -26,12 +26,12 @@ namespace StormShark.OniFluidShipping
 			string anim = "stormshark_canisterinserter_kanim";
 			int hitpoints = 30;
 			float construction_time = 10f;
-			float[] tieR4 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER4;
+			float[] tier2 = TUNING.BUILDINGS.CONSTRUCTION_MASS_KG.TIER2; // 100
 			string[] buildMaterials = MATERIALS.REFINED_METALS;
 			float melting_point = 1600f;
 			BuildLocationRule build_location_rule = BuildLocationRule.OnFloor;
 			EffectorValues none = NOISE_POLLUTION.NONE;
-			BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tieR4, buildMaterials, melting_point, build_location_rule, TUNING.BUILDINGS.DECOR.PENALTY.TIER1, none, 0.2f);
+			BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tier2, buildMaterials, melting_point, build_location_rule, TUNING.BUILDINGS.DECOR.PENALTY.TIER1, none, 0.2f);
 			buildingDef.Floodable = false;
 			buildingDef.AudioCategory = "Metal";
 			buildingDef.Overheatable = false;
